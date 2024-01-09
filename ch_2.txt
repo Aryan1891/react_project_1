@@ -1,0 +1,64 @@
+● - What is `NPM`?
+is a repository for managing all the packages 
+
+● - What is `Parcel/Webpack`? Why do we need it?
+
+
+● - What is `.parcel-cache`
+
+
+● - What is `npx` ?
+npx is used for executing a package.
+
+
+
+
+● - What is difference between `dependencies` vs `devDependencies`
+dependencies are used in production as well as development
+devDependencies are used in development of projects
+ 
+
+● - What is Tree Shaking?
+
+
+● - What is Hot Module Replacement?
+
+
+● - List down your favourite 5 superpowers of Parcel and describe any 3 of them in your
+own words.
+
+
+● - What is `.gitignore`? What should we add and not add into it?
+    it is used for ignoring the files that should not be pushed to github
+
+
+
+● - What is the difference between `package.json` and `package-lock.json`
+package.json is for storing version of the package and update it accordingly
+package-lock.json is for storing exact version of the package
+
+● - Why should I not modify `package-lock.json`?
+
+
+● - What is `node_modules` ? Is it a good idea to push that on git?
+
+Re-useable code of javascript which contains code for required packages
+
+It should not be pushed to git as it has a lot of files and these modules can be regenerated with the use of
+package.json files by running npm install command.
+
+
+● - What is the `dist` folder?
+
+
+● - What is `browserlists`
+
+
+Read about dif bundlers: vite, webpack, parcel
+
+
+● Read about: ^ - caret(updates when  there is a minor updates in version ) and ~ - tilda (updates when  there is a major updates in version ) 
+
+
+● Read about Script types in html (MDN Docs)
+
