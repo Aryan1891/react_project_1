@@ -1,0 +1,12 @@
+-> jsx is not html or xml in javascript 
+
+-> jsx is different language which has similar syntax 
+
+-> the browser or javascript engine doesn't understand jsx so before going to the browser the code is
+transpiled by parcel which has (babel a js compiler) this changed code is understand by the js compiler.
+
+----->jsx -> react element -> js object -> when rendered converted to html element
+
+-> a component is a javascript arrow function which returns an react element.
+
+->using a component inside a component is known as component compositioin
