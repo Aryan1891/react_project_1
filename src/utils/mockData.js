@@ -1,67 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-
-const Title = () => (
-  <>
-    <h1 id="title">Namaste React</h1>
-    <a href="/">
-      <img
-        className="logo"
-        alt="logo"
-        src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"
-      />
-    </a>
-  </>
-);
-
-const Header = () => (
-  <div className="header">
-    <Title />
-    <h2>Namaste React functional component</h2>
-    <h2>This is an h2 tag</h2>
-    <div className="nav-items">
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-        <li>Cart</li>
-      </ul>
-    </div>
-  </div>
-);
-
-const RestaurantCard = ({ name, cuisines, cloudinaryImageId, lastMileTravelString }) => (
-  <div className="card">
-    <img
-      src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`}
-      alt={name}
-    />
-    <h2>{name}</h2>
-    <h3>{cuisines.join(", ")}</h3>
-    <h4>{lastMileTravelString} minutes</h4>
-  </div>
-);
-
-const Body = () => (
-  <div className="restaurant-list">
-    {restrautList.map((restaurant) => (
-      <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
-    ))}
-  </div>
-);
-
-const Footer = () => <h4>Footer</h4>;
-
-const AppLayout = () => (
-  <>
-    <Header />
-    <Body />
-    <Footer />
-  </>
-);
-
-const restrautList = [
+export const restrautList = [
     {
 
         type: "restaurant",
@@ -1520,7 +1457,3 @@ const restrautList = [
     
       },
 ];
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
