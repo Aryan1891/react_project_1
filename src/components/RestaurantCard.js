@@ -12,3 +12,4 @@ const RestaurantCard = ({ name, cuisines, cloudinaryImageId, lastMileTravelStrin
   );
 
   export default RestaurantCard;
+ 
