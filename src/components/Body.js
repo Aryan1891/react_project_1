@@ -1,47 +1,53 @@
-import React, { useState, useEffect } from "react";
-import { restaurantList}  from "../utils/mockData.js";
 import RestaurantCard from "./RestaurantCard";
-import Shimmer from "./Shimmer.js";
+import Shimmer from "./Shimmer";
+import { useState, useEffect } from "react";
 
-function filterData(searchText, restaurants) {
-  const filteredData = restaurants.filter((restaurant) =>
-    restaurant.data.name.toLowerCase().includes(searchText.toLowerCase())
+function filterData(searchText, restaurants , initialData) {
+  if(!searchText){
+    console.log(initialData);
+    return initialData;
+  }
+  const filterData = restaurants.filter((restaurant) =>
+    restaurant?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase())
   );
-  return filteredData;
+
+  return filterData;
 }
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [initialData, setInitialData] = useState([]);
 
   useEffect(() => {
     getRestaurants();
   }, []);
 
   async function getRestaurants() {
-    try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-      );
-      const json = await data.json();
-      console.log(json);
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    );
 
-      // Optional Chaining
-      const cards = json?.data?.cards[2]?.data?.data?.cards || [];
+    const json = await data.json();
 
-      setAllRestaurants(cards);
-      setFilteredRestaurants(cards);
-    } catch (error) {
-      console.error("Error fetching restaurants:", error);
-    }
+    console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+    setInitialData(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+
+    setAllRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
-  // No need to check for !allRestaurants, as an empty array will be falsy
-  if (filteredRestaurants.length === 0)
-    return <h1>No Restaurant matches your filter!</h1>;
+  console.log("render");
 
-  return allRestaurants.length === 0 ? (
+  if (!allRestaurants) return null;
+
+  if (filteredRestaurants?.length === 0)
+    return <h1>No Restaurant matches your Filter!!</h1>;
+
+  return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <>
@@ -51,24 +57,24 @@ const Body = () => {
           className="search-input"
           placeholder="Search"
           value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
         />
         <button
           className="search-btn"
           onClick={() => {
-            // need to filter the data
-            const filteredData = filterData(searchText, allRestaurants);
-            // update the state - filteredRestaurants
-            setFilteredRestaurants(filteredData);
+            const data = filterData(searchText, allRestaurants, initialData);
+            setAllRestaurants(data);
+            setFilteredRestaurants(data);
           }}
         >
           Search
         </button>
       </div>
-
       <div className="restaurant-list">
-        {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
+        {allRestaurants.map((restaurant) => (
+          <RestaurantCard {...restaurant.info} key={restaurant.info.id} />
         ))}
       </div>
     </>
