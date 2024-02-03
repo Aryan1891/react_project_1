@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const loggedInUser = () => {
 
@@ -41,13 +42,17 @@ const Header = () => {
 
         <ul>
 
-          <li>Home</li>
+          <li>
+               Home</li>
 
-          <li>About</li>
+          {/* <li>
+            <Link to="/about">About</Link></li>
 
-          <li>Contact</li>
+          <li>
+            <Link to="/contact">Contact</Link></li> */}
 
-          <li>Cart</li>
+          <li>
+            Cart</li>
 
         </ul>
 
