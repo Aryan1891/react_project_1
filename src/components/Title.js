@@ -1,7 +1,7 @@
 import { LOGO_LINK } from "../utils/constants";
 const Title = () => (
     <>
-      <h1 id="title">Namaste React</h1>
+    
       <a href="/">
         <img
           className="logo"

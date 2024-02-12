@@ -1,7 +1,9 @@
-
 import { useState } from "react";
+
+
 import { Link } from "react-router-dom";
 
+import Title from "./Title";
 const loggedInUser = () => {
 
   // API call to check authentication
@@ -10,23 +12,13 @@ const loggedInUser = () => {
 
 };
 
-const Title = () => (
+// SPA - Single Page Application???
 
-  <a href="/">
+// Client Side Routing
 
-    <img
 
-      className="logo"
 
-      alt="logo"
 
-      src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"
-
-    />
-
-  </a>
-
-);
 
 const Header = () => {
 
@@ -41,19 +33,20 @@ const Header = () => {
       <div className="nav-items">
 
         <ul>
-
+          
           <li>
-               Home</li>
-
-          {/* <li>
-            <Link to="/about">About</Link></li>
-
+            <Link to="/">Home </Link>
+          </li> 
+          
+          <li><Link to="/about">
+           About 
+          </Link></li>
           <li>
-            <Link to="/contact">Contact</Link></li> */}
-
-          <li>
-            Cart</li>
-
+            <Link to="/contact">
+            Contact
+          </Link> 
+          </li>
+          <li>Cart </li>
         </ul>
 
       </div>
