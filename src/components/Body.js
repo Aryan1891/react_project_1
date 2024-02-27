@@ -51,10 +51,11 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="search-container p-5 bg-pink-50 my-5">
+        
         <input
           type="text"
-          className="search-input"
+          className="focus:bg-green-200 p-2 m-2"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
@@ -62,8 +63,8 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
-          onClick={() => {
+        className="p-2 m-2 bg-purple-900 hover:bg-gray-500 text-white rounded-md"   
+               onClick={() => {
             const data = filterData(searchText, allRestaurants, initialData);
             setAllRestaurants(data);
             setFilteredRestaurants(data);
@@ -72,14 +73,14 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap"  >
         {allRestaurants.map((restaurant) => (
           // <RestaurantCard {...restaurant.info} key={restaurant.info.id} />
           <Link
 
           to={"/restaurant/" + restaurant.info.id}
 
-          key={restaurant.info.id}
+          key={restaurant.info.id} className="bg-slate-200 hover:bg-slate-800 py-25"
 
         >
 

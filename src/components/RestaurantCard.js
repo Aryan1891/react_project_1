@@ -1,7 +1,7 @@
 import { CDN_LINK } from "../utils/constants";
 const RestaurantCard = ({ name, cuisines,avgRating,cloudinaryImageId, sla }) => (
-    <div className="card">
-      <img
+  <div className="w-56 p-2 m-2 shadow-lg bg-pink-50">
+          <img
         src={CDN_LINK+cloudinaryImageId}
         alt={name}
       />
