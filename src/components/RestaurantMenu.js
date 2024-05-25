@@ -10,11 +10,12 @@ const RestaurantMenu=()=>{
       <h1>Name of the Restaurant</h1>
       <h2>items</h2>
       <ul>
-      {Object.values(restaurantItems).map((item) => (
+        {console.log(restaurantItems)}
+      {/* {Object?.values(restaurantItems).map((item) => (
 
       <li key={item.card.info.id}>{item.card.info.name}</li>
 
-      ))}
+      ))} */}
       </ul>
     </div>
   )

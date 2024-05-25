@@ -12,5 +12,16 @@ const RestaurantCard = ({ name, cuisines,avgRating,cloudinaryImageId, sla }) => 
     </div>
   );
 
+  export const withPromotedLabel = (RestaurantCard) => {
+    return (props) => {
+      return (
+        <div>
+          <label className="absolute bg-black m-2 p-2 text-white rounded-lg"> promoted</label>
+          <RestaurantCard {...props}/>
+        </div>
+      );
+    };
+  };
+
   export default RestaurantCard;
  

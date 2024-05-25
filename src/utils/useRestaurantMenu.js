@@ -11,8 +11,9 @@ const useRestaurantMenu =(resId)=>{
     const fetchMenu=async()=>{
     const data=await fetch(MENU_LINK + resId)
     const json= await data.json()
-    console.log(json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards)
-    setRestaurantItems(json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards)
+    console.log("sdfd")
+    console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.categories[1].itemCards)
+    setRestaurantItems(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.categories[1].itemCards)
   }
 
   return restaurantItems

@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -20,6 +20,7 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [initialData, setInitialData] = useState([]);
+  const promotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     getRestaurants();
@@ -32,7 +33,7 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    // console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     setInitialData(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
@@ -75,18 +76,13 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap"  >
         {allRestaurants.map((restaurant) => (
-          // <RestaurantCard {...restaurant.info} key={restaurant.info.id} />
           <Link
-
-          to={"/restaurant/" + restaurant.info.id}
-
-          key={restaurant.info.id} className="bg-slate-200 hover:bg-slate-800 py-25"
-
-        >
-
-          <RestaurantCard {...restaurant.info} />
-
-        </Link>
+            to={"/restaurant/" + restaurant.info.id}
+            key={restaurant.info.id} className="bg-slate-200 hover:bg-slate-800 py-25"
+          >
+            {(restaurant.info.aggregatedDiscountInfoV3) ? <promotedRestaurantCard {...restaurant.info}/> : <RestaurantCard {...restaurant.info} />}
+            {/* <RestaurantCard {...restaurant.info} /> */}
+          </Link>
         ))}
       </div>
     </>
